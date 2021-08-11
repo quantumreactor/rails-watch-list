@@ -23,6 +23,11 @@ def create
   end
 end
 
+def destroy 
+  Bookmark.destroy
+  redirect_to root_path
+end
+
 private
 
 def list_params

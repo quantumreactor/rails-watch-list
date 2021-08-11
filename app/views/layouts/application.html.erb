@@ -14,11 +14,11 @@
 
   <body>
   <div>
-  <%= link_to 'RailsWatchList', root_path %> &nbsp;
-  <%= link_to 'Mis listas', lists_path %> &nbsp;
-  <%= link_to 'Crear lista', new_list_path %> &nbsp;
-  <%= link_to 'Mis marcadores', bookmarks_path %> &nbsp;
-  <%= link_to 'Añadir marcador', new_bookmark_path %> &nbsp;
+  <%= link_to 'RailsWatchList', root_path, class: "btn btn-primary btn-lg" %> &nbsp;
+  <%= link_to 'Mis listas', lists_path, class: "btn btn-light"  %> &nbsp;
+  <%= link_to 'Crear lista', new_list_path, class: "btn btn-light"  %> &nbsp;
+  <%= link_to 'Mis marcadores', bookmarks_path, class: "btn btn-light"  %> &nbsp;
+  <%= link_to 'Crear marcador', new_bookmark_path, class: "btn btn-light"  %> &nbsp;
   </div>
 
     <%= yield %>

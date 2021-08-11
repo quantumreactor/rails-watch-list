@@ -1,9 +1,7 @@
 <h2> Mis listas de peliculas</h2>
 
-<h3> <%= @list.name %></h3>
-<% #@bookmarks.each do |bm| %>
-
-<%= @bookmarks.comment %> <br>
-<%= @bookmarks.movie.title %> <br>
-<%  %>
-<% #end %>
+Lista: <h3> <%= @list.name %></h3>
+Marcador: <%= @bookmarks.comment %> <br>
+Peliculas: <%= @bookmarks.movie.title %> <br>
+<%= link_to 'Añadir marcador a esta lista', new_bookmark_path, class: "btn btn-primary" %>
+<%= link_to 'Eliminar este marcador', bookmark_path(@list.id, @bookmarks.id), method: :delete, class: "btn btn-danger" %>

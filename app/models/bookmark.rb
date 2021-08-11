@@ -1,5 +1,5 @@
 class Bookmark < ApplicationRecord
-  belongs_to :movie 
+  belongs_to :movie
   validates :movie, presence: true, uniqueness: { scope: :list }
   belongs_to :list
   validates :list, presence: true, uniqueness: true

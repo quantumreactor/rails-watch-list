@@ -1,0 +1,12 @@
+<h2> Mis listas de peliculas</h2>
+<!-- 
+Clasicas del Kung Fu
+Samurais en blanco y negro
+Hard Science Fiction
+Cyberpunk 90s
+-->
+<ul>
+<% @lists.each do |list| %>
+<li> <%= link_to list.name, list_path(list) %> </li>
+<% end %>
+</ul>

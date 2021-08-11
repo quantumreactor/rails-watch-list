@@ -5,7 +5,9 @@ def index
 end
 
 def show
-  #@list = List.new
+  #@bookmarks = Bookmark.where("list_id = '#{@list.id}'")
+  @bookmarks = Bookmark.find_by(list_id: @list.id)
+  #raise
 end
 
 def new

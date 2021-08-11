@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :bookmarks, only: %i[new create show destroy]
   resources :lists, only: %i[index show new create]
 
+    root to: 'lists#index'
   # lists
   #get '/lists', to: 'lists#index'
 

@@ -1,0 +1,6 @@
+<%= simple_form_for(@bookmark) do |b| %>
+  <%= b.input :comment %>
+  <%= b.association :movie, as: :radio_buttons%>
+  <%= b.association :list, as: :radio_buttons %>
+  <%= b.button :submit, "Añadir este marcador", class: "btn btn-primary" %>
+<% end %>

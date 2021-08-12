@@ -1,13 +1,17 @@
 class ListsController < ApplicationController
 before_action :find_list, except: [ :index, :new, :create ]
-def index 
+
+def index
   @lists = List.all
 end
 
 def show
   #@bookmarks = Bookmark.where("list_id = '#{@list.id}'")
   @bookmarks = Bookmark.find_by(list_id: @list.id)
-  #raise
+  # if @bookmarks.nil?
+  #   @bookmarks = 
+  # else
+  # end
 end
 
 def new
@@ -23,18 +27,19 @@ def create
   end
 end
 
-def destroy 
-  Bookmark.destroy
-  redirect_to root_path
+def destroy
+  @list.destroy
+  redirect_to lists_path
 end
 
 private
+
+def find_list
+  @list = List.find(params[:id])
+end
 
 def list_params
   params.require(:list).permit(:name)
 end
 
-def find_list
-  @list = List.find(params[:id])
-end
 end

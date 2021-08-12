@@ -1,0 +1,11 @@
+<h2>Mis marcadores</h2>
+<ul>
+<% @bookmarks.each do |bm| %>
+<li> <%= link_to bm.comment, list_path(bm.list) %> </li>
+<li> Edit &nbsp; Delete</li>
+<ul>
+<li> Lista: <%= bm.list.name %> </li>
+<li> Pelicula: <%= bm.movie.title %> </li>
+</ul>
+<% end %>
+</ul>

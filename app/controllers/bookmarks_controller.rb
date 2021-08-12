@@ -1,5 +1,10 @@
 class BookmarksController < ApplicationController
-  before_action :find_bookmark, except: [ :index, :new, :create ]
+  before_action :find_bookmark, only: :destroy
+  before_action :set_list, only: [:new, :create]
+
+  def index
+    @bookmarks = Bookmark.all
+  end
 
   def new
     @bookmark = Bookmark.new
@@ -7,19 +12,16 @@ class BookmarksController < ApplicationController
 
   def create
     @bookmark = Bookmark.new(bookmark_params)
-    if @bookmark.save
-      redirect_to bookmark_path(@bookmark)
-    else
-      render :new
-    end
+    @bookmark.list = @list
+    flash[:notice] = @bookmark.errors.full_messages.to_sentence unless @bookmark.save
+    redirect_to list_path(@list)
   end
 
   def show; end
 
   def destroy
-    
     @bookmark.destroy
-    redirect_to root_path
+    redirect_to list_path(@bookmark.list)
   end
 
   private
@@ -29,7 +31,11 @@ class BookmarksController < ApplicationController
   end
 
   def find_bookmark
-    #@bookmark = Bookmark.find(params[:id])
-    @list = List.find(params[:id])
+    @bookmark = Bookmark.find(params[:id])
   end
+
+  def set_list
+    @list = List.find(params[:list_id])
+  end
+
 end

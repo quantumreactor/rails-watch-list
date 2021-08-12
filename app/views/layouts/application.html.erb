@@ -13,12 +13,10 @@
   </head>
 
   <body>
-  <div>
+  <div class="p-0 mb-2 bg-secondary bg-gradient">
   <%= link_to 'RailsWatchList', root_path, class: "btn btn-primary btn-lg" %> &nbsp;
   <%= link_to 'Mis listas', lists_path, class: "btn btn-light"  %> &nbsp;
   <%= link_to 'Crear lista', new_list_path, class: "btn btn-light"  %> &nbsp;
-  <%= link_to 'Mis marcadores', bookmarks_path, class: "btn btn-light"  %> &nbsp;
-  <%= link_to 'Crear marcador', new_bookmark_path, class: "btn btn-light"  %> &nbsp;
   </div>
 
     <%= yield %>

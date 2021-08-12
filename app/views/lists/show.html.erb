@@ -15,4 +15,8 @@
 <p> No bookmarks found </p>
 <% end %>
 
+<div class="card" style="height: 400px;background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key, height: 300, crop: :fill %>')">
+  Cool list!
+</div>
+
 <%= link_to 'Añadir marcador', new_list_bookmark_path(@list), class: "btn btn-primary" %>

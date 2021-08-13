@@ -32,6 +32,14 @@ def destroy
   redirect_to lists_path
 end
 
+def edit
+  
+end
+
+def update 
+end
+
+
 private
 
 def find_list

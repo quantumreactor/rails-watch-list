@@ -7,17 +7,18 @@
       <h3> <%= @list.name %></h3>
       <p>Descripcion de la lista!</p>
     </div>
-    <%= link_to 'Delete', list_path(@list), method: :delete, class: "btn btn-danger", data: { confirm: 'Esta seguro?'} %>
+    <%= link_to '🗑️ Eliminar', list_path(@list), method: :delete, title: 'Eliminar esta lista', class: "btn btn-light font-size-2", data: { confirm: 'Esta seguro?'} %>
     
   </div>
 </div>
 
 
 
-<ul>
+<ul class="list-group">
 <% @list.bookmarks.each do |bm| %>
-<li> <%= bm.comment %>, <%= bm.movie.title %> 
-<%= link_to 'Eliminar', bookmark_path(bm), method: :delete, class: "btn btn-danger"  %>
+<li class="list-group-item"> <span class="text-capitalize font-size-4 font-weight-bold"><%= bm.movie.title %> </span><br>
+<%= bm.comment %>
+<%= link_to '🗑️ Eliminar', bookmark_path(bm), method: :delete, title: 'Eliminar este marcador', class: "btn btn-light font-size-1"  %>
 </li>
 <% end %>
 </ul>
@@ -26,6 +27,6 @@
 <p> No bookmarks found </p>
 <% end %>
 
-<%= link_to 'Añadir marcador', new_list_bookmark_path(@list), class: "btn btn-primary" %>
+<%= link_to '➕ Añadir marcador', new_list_bookmark_path(@list), class: "btn btn-light" %>
 
 </div>

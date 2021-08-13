@@ -1,13 +1,24 @@
-<h2> Mis listas de peliculas</h2>
 
- <h3> Lista: <%= @list.name %></h3>
+<div class="container">
+<div class="card-trip">
+  <%= cl_image_tag @list.photo.key, height: 300, crop: :fill %>
+  <div class="card-trip-infos">
+    <div>
+      <h3> <%= @list.name %></h3>
+      <p>Descripcion de la lista!</p>
+    </div>
+    <%= link_to 'Delete', list_path(@list), method: :delete, class: "btn btn-danger", data: { confirm: 'Esta seguro?'} %>
+    
+  </div>
+</div>
+
+
 
 <ul>
 <% @list.bookmarks.each do |bm| %>
 <li> <%= bm.comment %>, <%= bm.movie.title %> 
 <%= link_to 'Eliminar', bookmark_path(bm), method: :delete, class: "btn btn-danger"  %>
 </li>
-
 <% end %>
 </ul>
 
@@ -15,8 +26,6 @@
 <p> No bookmarks found </p>
 <% end %>
 
-<div class="card" style="height: 400px;background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key, height: 300, crop: :fill %>')">
-  Cool list!
-</div>
-
 <%= link_to 'Añadir marcador', new_list_bookmark_path(@list), class: "btn btn-primary" %>
+
+</div>

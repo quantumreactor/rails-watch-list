@@ -7,7 +7,10 @@
   <div class="cards">
     <% @lists.each do |list| %>
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path list.photo.key, height: 300, crop: :fill %>)">
-        <%= link_to list.name, list_path(list) %>        
+        <%= link_to list.name, list_path(list) %>
+        <div><br><br><br>
+        <%= list.movies.count %> peliculas 
+        </div>
       </div>
     <% end %>
   </div>

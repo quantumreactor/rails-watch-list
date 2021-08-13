@@ -9,7 +9,7 @@ def show
   #@bookmarks = Bookmark.where("list_id = '#{@list.id}'")
   @bookmarks = Bookmark.find_by(list_id: @list.id)
   # if @bookmarks.nil?
-  #   @bookmarks = 
+  #   @bookmarks =
   # else
   # end
 end

@@ -43,7 +43,7 @@ Rails.application.routes.draw do
 
 # These resources definitions come from the exercise solution
 # https://github.com/lewagon/rails-watch-list/blob/solution-day-one/config/routes.rb
-  resources :lists, except: [:edit, :update] do
+  resources :lists do
     resources :bookmarks, only: [:new, :create]
     #resources :reviews, only: :create
   end

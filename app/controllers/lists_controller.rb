@@ -8,6 +8,7 @@ end
 def show
   #@bookmarks = Bookmark.where("list_id = '#{@list.id}'")
   @bookmarks = Bookmark.find_by(list_id: @list.id)
+  @review = Review.new
   # if @bookmarks.nil?
   #   @bookmarks =
   # else
@@ -33,7 +34,7 @@ def destroy
 end
 
 def edit
-  
+
 end
 
 def update 

@@ -45,10 +45,10 @@ Rails.application.routes.draw do
 # https://github.com/lewagon/rails-watch-list/blob/solution-day-one/config/routes.rb
   resources :lists do
     resources :bookmarks, only: [:new, :create]
-    #resources :reviews, only: :create
+    resources :reviews, only: :create
   end
   resources :bookmarks, only: :destroy
-  #resources :reviews, only: :destroy
+  resources :reviews, only: :destroy
 # The above resources definitions generate the following routes: 
 # ➜  rails-watch-list git:(master) ✗ rails routes
 #                    Prefix Verb   URI Pattern                                                                              Controller#Action

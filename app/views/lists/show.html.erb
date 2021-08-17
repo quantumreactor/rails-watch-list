@@ -1,33 +1,54 @@
 
-<div class="container">
-<div class="card-trip">
-  <%= cl_image_tag @list.photo.key, height: 300, crop: :fill %>
-  <div class="card-trip-infos">
-    <div>
-      <h3> <%= @list.name %></h3>
-      <p>Descripcion de la lista!</p>
-    </div>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4), asset-url(<%= cl_image_path @list.photo.key, crop: :fill %>);">
+  <div class="container">
+    <h3> <%= @list.name %></h3>  
+    <p>Descripcion de la lista!</p>
+  </div>
+    <div class="text-align-right">
     <%= link_to '📝 Editar', edit_list_path(@list), title: 'Editar esta lista', class: "btn btn-light font-size-1"  %>
     <%= link_to '🗑️ Eliminar', list_path(@list), method: :delete, title: 'Eliminar esta lista', class: "btn btn-light font-size-2", data: { confirm: 'Esta seguro?'} %>
-    
   </div>
 </div>
-
-
-
-<ul class="list-group">
-<% @list.bookmarks.each do |bm| %>
-<li class="list-group-item"> <span class="text-capitalize font-size-4 font-weight-bold"><%= bm.movie.title %> </span><br>
-<%= bm.comment %>
-<%= link_to '🗑️ Eliminar', bookmark_path(bm), method: :delete, title: 'Eliminar este marcador', class: "btn btn-light font-size-1"  %>
-</li>
-<% end %>
-</ul>
 
 <% if @bookmarks.nil? %>
 <p> No bookmarks found </p>
 <% end %>
 
+  <div class="cards card-trip">
+    <% @list.bookmarks.each do |bm| %>
+      <div class="card-category card-trip-infos" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('movie-poster.jpg');">
+        <div>
+          <h4> <%= bm.movie.title %> </h4>
+          <p> <%= bm.comment %>  </p>
+        </div>
+        <h5>⭐</h5>
+      </div>
+  <% end %>
 <%= link_to '➕ Añadir marcador', new_list_bookmark_path(@list), class: "btn btn-light" %>
+    </div>
+
+<div class="container" style="display: flex; justify-content: space-between;">
+<div id="reviews" style="flex-item">
+<strong>Reviews</strong>
+<!-- review list -->
+<% if @list.reviews.nil? %>
+<p> No reviews yet  </p>
+<% end %>
+<ul class="list-group">
+<% @list.reviews.each do |r| %>
+<li class="list-item inline-list"> <%= r.rating %> <%= r.content %></li>
+<% end %>
+</ul>
+</div endid="reviews">
+<div id="reviewform">
+Add your review
+<!-- review form -->
+<%= render 'review' %>
+</div endid="reviewform">
+</div>
+
+
+
 
 </div>
